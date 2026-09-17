@@ -19,35 +19,36 @@ export const QuickReview: React.FC<QuickReviewProps> = ({
     <section className="w-full max-w-4xl mx-auto px-3 sm:px-4 mt-4 mb-2">
       <div className="bg-white rounded-2xl border border-stone-200/90 shadow-xs overflow-hidden transition-all duration-200">
         {/* Header Bar */}
-        <div 
+        <div
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="w-full flex items-center justify-between p-3.5 sm:p-4 bg-stone-900 text-stone-100 cursor-pointer select-none hover:bg-stone-850 transition-colors"
+          className="w-full flex items-center justify-between p-3 sm:p-4 bg-[#037487] text-[#FAF6EE] cursor-pointer select-none hover:bg-[#027588] transition-colors"
         >
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
-              <Zap className="w-4 h-4 fill-amber-400" />
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/25 shadow-xs">
+              <Zap className="w-4 h-4 fill-amber-300 text-amber-300" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
-                Quick Menu Review
-                <span className="text-[10px] uppercase font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                  At a Glance
-                </span>
-              </h2>
-              <p className="text-[11px] sm:text-xs text-stone-400">
+            <div >
+              <div className='flex items-center gap-2 justify-between'>
+                <h2 className="text-base sm:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                  Quick Menu Review
+
+                </h2>
+                <div className="flex items-center gap-1.5 text-xs text-white font-medium bg-[#026071]/80 px-2.5 py-1 rounded-full border border-[#024d5b] shadow-xs">
+                  <span>{isCollapsed ? 'Expand' : 'Collapse'}</span>
+                  {isCollapsed ? (
+                    <ChevronDown className="w-3.5 h-3.5 text-white" />
+                  ) : (
+                    <ChevronUp className="w-3.5 h-3.5 text-white" />
+                  )}
+                </div>
+              </div>
+              <p className="text-[11px] sm:text-xs text-cyan-50 opacity-90">
                 Complete menu items &amp; prices without descriptions
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-stone-400 font-medium bg-stone-800 px-2.5 py-1 rounded-full border border-stone-700">
-            <span>{isCollapsed ? 'Expand' : 'Collapse'}</span>
-            {isCollapsed ? (
-              <ChevronDown className="w-3.5 h-3.5 text-stone-300" />
-            ) : (
-              <ChevronUp className="w-3.5 h-3.5 text-stone-300" />
-            )}
-          </div>
+
         </div>
 
         {/* Quick Review Grid List */}
