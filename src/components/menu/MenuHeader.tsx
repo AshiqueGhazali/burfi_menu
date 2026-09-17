@@ -33,7 +33,7 @@ export const MenuHeader: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-900/20 rounded-full blur-2xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-        {/* Brand Badge */}
+        {/* Brand Badge ,*/}
         <div className="inline-flex items-center gap-1.5 px-3  text-white text-xs font-semibold mb-1">
           <span>Digital Menu Card</span>
         </div>
