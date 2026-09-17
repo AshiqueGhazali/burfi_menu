@@ -34,8 +34,7 @@ export const MenuHeader: React.FC = () => {
 
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
         {/* Brand Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/25 text-white text-xs font-semibold mb-3 backdrop-blur-sm shadow-xs">
-          <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+        <div className="inline-flex items-center gap-1.5 px-3  text-white text-xs font-semibold mb-1">
           <span>Digital Menu Card</span>
         </div>
 
