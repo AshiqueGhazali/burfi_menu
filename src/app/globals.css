@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+:root {
+  --bg-primary: #FDFBF7;
+  --bg-secondary: #F6F1E9;
+  --text-main: #231C18;
+  --text-muted: #6E635C;
+  --accent-gold: #C07D2B;
+  --accent-amber: #D97706;
+  --espresso-dark: #1E1612;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  background-color: #FDFBF7;
+  color: #231C18;
+  overflow-x: hidden;
+}
+
+/* Custom glow and backdrop effects */
+.glass-header {
+  background-color: rgba(30, 22, 18, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav {
+  background-color: rgba(253, 251, 247, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Veg / Non-Veg Icons */
+.veg-border {
+  border: 1.5px solid #16a34a;
+}
+.veg-dot {
+  background-color: #16a34a;
+}
+
+.non-veg-border {
+  border: 1.5px solid #dc2626;
+}
+.non-veg-dot {
+  background-color: #dc2626;
+}
+
+/* Smooth tap transitions */
+.active-pill {
+  box-shadow: 0 4px 14px 0 rgba(217, 119, 6, 0.35);
+}
