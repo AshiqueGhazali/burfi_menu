@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MENU_CATEGORIES, MENU_ITEMS, MenuCategory, MenuItem } from '@/data/menu';
 import { MenuHeader } from '@/components/menu/MenuHeader';
+import { QuickReview } from '@/components/menu/QuickReview';
 import { CategoryNavigation } from '@/components/menu/CategoryNavigation';
 import { MenuSearch } from '@/components/menu/MenuSearch';
 import { MenuSection } from '@/components/menu/MenuSection';
@@ -48,7 +49,7 @@ export default function Home() {
     if (searchQuery.trim()) return; // Disable scroll spy during active search
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 140;
+      const scrollPosition = window.scrollY + 160;
 
       for (let i = MENU_CATEGORIES.length - 1; i >= 0; i--) {
         const cat = MENU_CATEGORIES[i];
@@ -87,10 +88,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#231C18] flex flex-col font-sans selection:bg-amber-200">
-      {/* Hero Header */}
+      {/* 1. Hero Header */}
       <MenuHeader />
 
-      {/* Sticky Category Navigation & Filters */}
+      {/* 2. Quick Review (Compact item name + price list for all items) */}
+      <QuickReview categories={MENU_CATEGORIES} items={MENU_ITEMS} />
+
+      {/* 3. Sticky Category Navigation & Dietary Filters */}
       <CategoryNavigation
         categories={MENU_CATEGORIES}
         activeCategoryId={activeCategoryId}
@@ -99,14 +103,14 @@ export default function Home() {
         onSelectDietaryFilter={setDietaryFilter}
       />
 
-      {/* Search Input */}
+      {/* 4. Menu Search */}
       <MenuSearch
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         resultCount={filteredItems.length}
       />
 
-      {/* Main Content Area */}
+      {/* 5. Detailed Category Sections & Items */}
       <main className="flex-1 w-full max-w-4xl mx-auto px-3 sm:px-4 py-4">
         {/* Active Filters Bar if Veg/Non-Veg active */}
         {dietaryFilter !== 'ALL' && (
@@ -124,7 +128,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* Menu Sections Rendered Dynamically */}
+        {/* Detailed Menu Sections */}
         {categoriesWithItems.length > 0 ? (
           categoriesWithItems.map(({ category, items }) => (
             <MenuSection key={category.id} category={category} items={items} />
@@ -148,16 +152,16 @@ export default function Home() {
               }}
               className="px-5 py-2.5 bg-amber-600 text-white rounded-full text-xs font-bold shadow-md hover:bg-amber-700 transition-colors cursor-pointer"
             >
-              Reset Search & Filters
+              Reset Search &amp; Filters
             </button>
           </div>
         )}
       </main>
 
-      {/* Cafe Footer */}
+      {/* 6. Cafe Footer */}
       <CafeFooter />
 
-      {/* Floating Back to Top Button */}
+      {/* 7. Floating Back to Top Button */}
       <BackToTop />
     </div>
   );
