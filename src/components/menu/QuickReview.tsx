@@ -23,12 +23,12 @@ export const QuickReview: React.FC<QuickReviewProps> = ({
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="w-full flex items-center justify-between p-3 sm:p-4 bg-[#037487] text-[#FAF6EE] cursor-pointer select-none hover:bg-[#027588] transition-colors"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex w-full items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/25 shadow-xs">
               <Zap className="w-4 h-4 fill-amber-300 text-amber-300" />
             </div>
-            <div >
-              <div className='flex items-center gap-2 justify-between'>
+            <div className='w-full'>
+              <div className='flex w-full items-center gap-2 justify-between'>
                 <h2 className="text-base sm:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
                   Quick Menu Review
 
