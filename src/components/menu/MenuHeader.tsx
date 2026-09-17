@@ -1,9 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Clock, MapPin, Coffee, UtensilsCrossed } from 'lucide-react';
 
 export const MenuHeader: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  useEffect(() => {
+    const checkStatus = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const totalMinutes = hours * 60 + minutes;
+
+      // 04:00 PM (16:00) = 960 minutes
+      // 11:30 PM (23:30) = 1410 minutes
+      const openTime = 16 * 60;
+      const closeTime = 23 * 60 + 30;
+
+      setIsOpen(totalMinutes >= openTime && totalMinutes <= closeTime);
+    };
+
+    checkStatus();
+    const interval = setInterval(checkStatus, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <header className="relative w-full bg-[#037487] text-[#FAF6EE] pt-7 pb-8 px-4 rounded-b-3xl shadow-xl overflow-hidden border-b border-[#026c7e]/40">
       {/* Background Subtle Glows */}
@@ -35,9 +57,18 @@ export const MenuHeader: React.FC = () => {
         {/* Quick Info Bar */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-white">
           <div className="flex items-center gap-1.5 bg-[#026071]/70 border border-[#024d5b] px-3 py-1.5 rounded-full shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="w-2 h-2 rounded-full bg-emerald-400 -ml-3.5" />
-            <span className="font-semibold text-emerald-300">Open Now</span>
+            {isOpen ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 -ml-3.5" />
+                <span className="font-semibold text-emerald-300">Open Now</span>
+              </>
+            ) : (
+              <>
+                <span className="w-2 h-2 rounded-full bg-rose-400" />
+                <span className="font-semibold text-rose-300">Closed</span>
+              </>
+            )}
           </div>
 
           <div className="flex items-center gap-1 bg-[#026071]/70 border border-[#024d5b] px-3 py-1.5 rounded-full shadow-xs">
